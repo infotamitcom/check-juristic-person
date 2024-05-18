@@ -1,0 +1,19 @@
+name: PHP CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4' # หรือเวอร์ชันที่ต้องการ
+    - name: Install dependencies
+      run: composer install
+    - name: Run tests
+      run: phpunit
